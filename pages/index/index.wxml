@@ -1,0 +1,61 @@
+<scroll-view class="container" scroll-y>
+  <!-- Header: Today's Date -->
+  <view class="top-header">
+    <text class="today-text">{{headerDate}}</text>
+  </view>
+
+  <!-- Navigation & Current FB Info: << FB26XX, Mon >> -->
+  <view class="fb-header">
+    <view class="nav-row">
+      <view class="nav-btn" bindtap="prevFBView">«</view>
+      <view class="month-title">{{fbTitle}}</view>
+      <view class="nav-btn" bindtap="nextFBView">»</view>
+    </view>
+    <view class="fb-range-row" wx:if="{{currentFB}}">
+      <text class="fb-range-text">{{currentFB.startDate}} to {{currentFB.endDate}}</text>
+    </view>
+  </view>
+
+  <!-- Calendar Grid with month background (on top so not covered by highlights) -->
+  <view class="calendar-container">
+    <!-- Week Days Header -->
+    <view class="week-row">
+      <view class="week-cell" wx:for="{{['日','一','二','三','四','五','六']}}" wx:key="*this">{{item}}</view>
+    </view>
+
+    <!-- Days: only current month (leading empty cells for alignment) -->
+    <view class="days-grid">
+      <block wx:for="{{calendarDays}}" wx:key="fullDate">
+        <view wx:if="{{item.isEmpty}}" class="day-cell day-cell-empty"></view>
+        <view wx:else
+              class="day-cell {{item.isFBEnd ? 'fb-end' : ''}} {{item.isInFBRange && !item.isFBEnd ? 'fb-range' : ''}}"
+              bindtap="onDateClick"
+              data-date="{{item.fullDate}}">
+          <view class="day-cell-left" wx:if="{{item.holidaysLeft && item.holidaysLeft.length > 0}}">
+            <view class="holiday-dot" wx:for="{{item.holidaysLeft}}" wx:key="country" wx:for-item="h" style="background-color: {{h.color}}"></view>
+          </view>
+          <view class="day-cell-main">
+            <view class="day-top">
+              <text class="day-number {{item.isToday ? 'today-circle' : ''}}">{{item.dayNum}}</text>
+            </view>
+            <view class="day-center">
+              <text class="start-label" wx:if="{{item.isFBStart}}">开始</text>
+              <text class="end-label" wx:if="{{item.isFBEnd}}">结束</text>
+            </view>
+            <view class="day-bottom" wx:if="{{item.holidaysBottom && item.holidaysBottom.length > 0}}">
+              <view class="holiday-dot" wx:for="{{item.holidaysBottom}}" wx:key="country" wx:for-item="h" style="background-color: {{h.color}}"></view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="calendar-month-bg">{{calendarMonthDigit}}</view>
+  </view>
+
+  <!-- Legend -->
+  <view class="legend-container">
+    <view class="legend-item" wx:for="{{legendItems}}" wx:key="code">
+      <view class="legend-box" style="background-color: {{item.color}}; color: {{item.textColor}}">{{item.code}}</view>
+    </view>
+  </view>
+</scroll-view>

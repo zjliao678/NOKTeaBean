@@ -1,0 +1,249 @@
+/** index.wxss - responsive with rpx */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-bottom: 32rpx;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Header Section - smaller gap below nav bar (FB Calendar) */
+.top-header {
+  margin-top: 16rpx;
+  margin-bottom: 24rpx;
+  width: 100%;
+  text-align: center;
+}
+
+.today-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Navigation & Info */
+.fb-header {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.nav-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20rpx;
+}
+
+.nav-btn {
+  font-size: 40rpx;
+  color: #ccc;
+  padding: 0 24rpx;
+}
+
+.month-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.fb-range-row {
+  margin-bottom: 16rpx;
+}
+
+.fb-range-text {
+  font-size: 26rpx;
+  color: #999;
+}
+
+/* Calendar Grid */
+.calendar-container {
+  width: 94%;
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.calendar-month-bg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 280rpx;
+  font-weight: 200;
+  color: rgba(0, 0, 0, 0.06);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.week-row {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 16rpx;
+}
+
+.week-cell {
+  text-align: center;
+  color: #666;
+  font-size: 26rpx;
+  font-weight: 500;
+}
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 12rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.day-cell {
+  min-height: 88rpx;
+  height: 88rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 6rpx;
+  padding-left: 4rpx;
+  padding-right: 4rpx;
+  border-radius: 8rpx;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.day-cell-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 4rpx;
+  gap: 4rpx;
+}
+
+.day-cell-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+.day-cell-empty {
+  background: transparent;
+  min-height: 88rpx;
+  height: 88rpx;
+}
+
+/* Small color square for holiday (country indicator) */
+.holiday-dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 2rpx;
+  flex-shrink: 0;
+}
+
+/* Light blue: dates within current FB range */
+.fb-range {
+  background-color: #E3F2FD;
+  border-radius: 4px;
+}
+
+.fb-range .day-number {
+  color: #1976D2;
+}
+
+/* Dark blue: FB end date */
+.fb-end {
+  background-color: #4285F4;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.fb-end .day-number {
+  color: #fff;
+}
+
+.day-top {
+  margin-bottom: 2rpx;
+}
+
+.day-number {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.today-circle {
+  color: #4285F4;
+  font-weight: bold;
+}
+
+.fb-end .today-circle {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.day-center {
+  height: 24rpx;
+  margin-bottom: 2rpx;
+}
+
+.start-label,
+.end-label {
+  font-size: 20rpx;
+  line-height: 24rpx;
+}
+
+.start-label {
+  color: #1976D2;
+}
+
+.fb-end .start-label {
+  color: #fff;
+}
+
+.end-label {
+  color: #fff;
+}
+
+.day-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4rpx;
+  width: 100%;
+}
+
+/* Legend */
+.legend-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 32rpx;
+  padding-bottom: 24rpx;
+  width: 95%;
+  gap: 4rpx;
+}
+
+.legend-box {
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: bold;
+}
