@@ -176,12 +176,31 @@
 
 .day-top {
   margin-bottom: 2rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .day-number {
   font-size: 32rpx;
   font-weight: 500;
   color: #333;
+}
+
+.lunar-str {
+  font-size: 18rpx;
+  color: #888;
+  line-height: 1.2;
+  margin-top: 2rpx;
+}
+
+.fb-range .lunar-str,
+.fb-end .lunar-str {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.fb-range .lunar-str {
+  color: #1976D2;
 }
 
 .today-circle {

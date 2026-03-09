@@ -1,5 +1,6 @@
 const { getFBInfo, getPrevFB, getNextFB } = require('../../utils/fbCalculator.js');
 const { holidays, countryColors, countryNames } = require('../../utils/holidayData.js');
+const { getLunarString } = require('../../utils/lunar.js');
 
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -96,11 +97,17 @@ Page({
     const holidaysLeft = dayHolidays.length > 3 ? dayHolidays.slice(0, 2) : [];
     const holidaysBottom = dayHolidays.length > 3 ? dayHolidays.slice(2) : dayHolidays;
 
+    const y = date.getFullYear();
+    const m = date.getMonth() + 1;
+    const d = date.getDate();
+    const lunarStr = getLunarString(y, m, d);
+
     return {
       isEmpty: false,
       date: date,
       fullDate: dateStr,
       dayNum: date.getDate(),
+      lunarStr: lunarStr,
       isCurrentMonth: isCurrentMonth,
       isToday: isToday,
       isFBStart: isFBStart,

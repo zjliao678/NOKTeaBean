@@ -37,6 +37,7 @@
           <view class="day-cell-main">
             <view class="day-top">
               <text class="day-number {{item.isToday ? 'today-circle' : ''}}">{{item.dayNum}}</text>
+              <text class="lunar-str" wx:if="{{item.lunarStr}}">{{item.lunarStr}}</text>
             </view>
             <view class="day-center">
               <text class="start-label" wx:if="{{item.isFBStart}}">开始</text>
